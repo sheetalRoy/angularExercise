@@ -1,0 +1,32 @@
+<div style="margin-top:20px;">
+    <div style="background-color: blue;height:30px;color:#fff;border-bottom:1px solid #000">
+        <h3>Recipe</h3>
+    </div>
+    <div style="border: 1px solid #ccc;">
+        <p style="color: red;">
+        {{recipesDetail.name}}
+        </p>
+        <p>Ingredients</p>
+        <ul *ngFor="let ing of recipesDetail.ingredients">
+            <li>{{ ing}}</li>
+        </ul>
+    </div>
+    <div>
+        <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+            <label>Name </label>
+            <input type="text" formControlName="name"/><br/>
+            <label>Email </label>
+            <input type="text" formControlName="email"/><br/>
+            <ng-container formGroupName="hobbiesArr">
+                <div formArrayName="hobbies">
+                    <ng-container *ngFor="let hobby of getHobbies();let i = index">
+                        <input type="text" [formControlName]="i"><br/>
+                    </ng-container>
+                </div>
+            </ng-container>
+            
+            <button type="button" (click)="addHobbies()">Add</button>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>

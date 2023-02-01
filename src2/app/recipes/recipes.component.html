@@ -1,0 +1,5 @@
+<div style="border: 1px solid #ccc;padding:5px">
+    {{recipe.name}}
+<a style="float: right;" (click)="navigatePage()" routerLink="/ingredients/{{recipe.id}}">View</a>
+</div>
+<router-outlet></router-outlet>
